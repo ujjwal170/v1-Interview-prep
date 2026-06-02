@@ -1,3 +1,7 @@
+@import "tailwindcss";
+/* highlight.js theme for MarkdownRenderer syntax highlighting (Req 13.2) */
+@import "highlight.js/styles/github.css";
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -55,15 +59,20 @@ body {
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1126px;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  /* Show the decorative side borders only when the viewport is wide enough
+     that the root container no longer spans the full width (Req 18.1) */
+  @media (min-width: 1126px) {
+    border-inline: 1px solid var(--border);
+  }
 }
 
 h1,
